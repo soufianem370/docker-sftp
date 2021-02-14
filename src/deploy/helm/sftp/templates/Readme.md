@@ -14,3 +14,9 @@ spec:
     requests:
       storage: 30Gi
 ```
+deploy sftp
+```
+helm repo add emberstack https://emberstack.github.io/helm-charts
+helm repo update
+helm upgrade --install sftp emberstack/sftp
+```
