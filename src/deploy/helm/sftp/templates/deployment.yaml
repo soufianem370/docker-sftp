@@ -46,6 +46,8 @@ spec:
               mountPath: "/app/config/sftp.json"
               subPath: sftp.json
               readOnly: true
+            - name: webdata
+              mountPath: "/usr/share/nginx/html"
           {{- end }}
           {{- with .Values.storage.volumeMounts }}
           {{- toYaml . | nindent 12 }}
@@ -68,6 +70,9 @@ spec:
             items:
               - key: sftp.json
                 path: sftp.json
+        - name: webdata
+          persistentVolumeClaim:
+            claimName: sftp-pvc   
       {{- end }}
       {{- with .Values.storage.volumes }}
       {{- toYaml . | nindent 8 }}
